@@ -9,40 +9,40 @@ const [image_url,setImage_url]  = useState("/");
 let inputRef = useRef(null);
 
 
-const generateImage = async ()=>{
+// const generateImage = async ()=>{
 
-  if (inputRef.current.value === ""){
+//   if (inputRef.current.value === ""){
 
 
-  }
+//   }
 
-  const response = await fetch('https://api.openai.com/v1/images/generations',
+//   const response = await fetch('https://api.openai.com/v1/images/generations',
 
-  {
+//   {
 
-    method:"POST",
-    headers:{
-        "Content-Type":"application/json",
-        Authorization:
-        "Bearer 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",
-        "User-Agent":"Chrome",
-    },
-    body:JSON.stringify({
+//     method:"POST",
+//     headers:{
+//         "Content-Type":"application/json",
+//         // Authorization:
+//         // "Bearer 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",
+//         "User-Agent":"Chrome",
+//     },
+//     body:JSON.stringify({
 
-          prompt:`${inputRef.current.value}`,
-          n:1,
-          size:"512x512",
+//           prompt:`${inputRef.current.value}`,
+//           n:1,
+//           size:"512x512",
 
-    }),
+//     }),
 
-  }
-  );
+//   }
+//   );
 
-let data = await response.json();
+// let data = await response.json();
 
-console.log(data);
+// console.log(data);
   
-}
+// }
   return (
     
       <div className='image-container'>

@@ -20,6 +20,8 @@ const ImageGenerator = () => {
         }
       });
       const data = response.data;
+
+      console.log(data);
       const firstImage = data.results[0];
       if (firstImage) {
         setImageUrl(firstImage.urls.regular);

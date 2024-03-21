@@ -1,19 +1,25 @@
 import React, { useState, useRef } from 'react';
 import './ImageGenerator.css';
 import image from '../Assests/default_image.svg';
+import axios from 'axios'; // Import Axios
 
 const ImageGenerator = () => {
   const [imageUrl, setImageUrl] = useState(image);
   const inputRef = useRef(null);
 
-  const accessKey = 'ZK6vHdAgjORAqaM7lJpvBKttu-t3kMAUfYMBNZctJw4'; // Replace with your Unsplash API access key
+  const accessKey = 'ZK6vHdAgjORAqaM7lJpvBKttu-t3kMAUfYMBNZctJw4'; // Replace with your Unsplash API 
 
   const generateImage = async () => {
     const query = inputRef.current.value.trim();
 
     try {
-      const response = await fetch(`https://api.unsplash.com/search/photos?query=${encodeURIComponent(query)}&client_id=${accessKey}`);
-      const data = await response.json();
+      const response = await axios.get(`https://api.unsplash.com/search/photos`, {
+        params: {
+          query: query,
+          client_id: accessKey
+        }
+      });
+      const data = response.data;
       const firstImage = data.results[0];
       if (firstImage) {
         setImageUrl(firstImage.urls.regular);
